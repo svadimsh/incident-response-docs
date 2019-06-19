@@ -1,14 +1,14 @@
 ---
 cover: assets/img/covers/security_incident.png
-description: Checklist of actions for responding to a security incident at PagerDuty.
+description: Checklist of actions for responding to a security incident at Solid Commerce.
 ---
 <div id="reviewed-dates">
-  <span><strong>Last Reviewed:</strong> <abbr title="We recommend you include with this document the date you last reviewed your process.">YYYY-MM-DD</abbr></span>
-  <span><strong>Last Tested:</strong> <abbr title="We recommend you include with this document the date you last tested your process.">YYYY-MM-DD</abbr></span>
+  <span><strong>Last Reviewed:</strong> <abbr title="We recommend you include with this document the date you last reviewed your process.">2019-06-10</abbr></span>
+  <span><strong>Last Tested:</strong> <abbr title="We recommend you include with this document the date you last tested your process.">2019-06-14</abbr></span>
 </div>
 
 !!! warning "Incident Commander Required"
-     As with all major incidents at PagerDuty, security ones will also involve an Incident Commander, who will delegate the tasks to relevant resolvers. Tasks may be performed in parallel as assigned by the IC. Page one at the earliest possible opportunity `!ic page`.
+     As with all major incidents at Solid Commerce, security ones will also involve an Incident Commander, who will delegate the tasks to relevant resolvers. Tasks may be performed in parallel as assigned by the IC. Contact one at the earliest possible opportunity `!ic page`.
 
 !!! question "Not Sure it's a Security Incident?"
     Trigger the process anyway. It's better to be safe than sorry. The Incident Commander will make a determination on if response is needed.
@@ -36,12 +36,12 @@ Details for each of these items are available in the next section.
 ## Attack Mitigation
 Stop the attack as quickly as you can, via any means necessary. Shut down servers, network isolate them, turn off a data center if you have to. Some common things to try,
 
-* Shutdown the instance from the provider console (do not delete or terminate if you can help it, as we'll need to do forensics).
+* In case you don't have access to the instance, shutdown the instance from the azure portal or via kvm console (do not delete or terminate if you can help it, as we'll need to do forensics).
 * If you happen to be logged into the box you can try to,
-    * Re-instate our default iptables rules to restrict traffic.
-    * `kill -9` any active session you think is an attacker.
-    * Change root password, and update /etc/shadow to lock out all other users.
-    * `sudo shutdown now`
+    * Re-instate our default firewall rules to restrict traffic.
+    * terminate any active session you think is an attacker.
+    * Change OS users passwords and delete any maliciuos users.
+    * In case of DB server hack, change sa password and disable all DB users
 
 ## Cut Off Attack Vector
 Identify the likely attack vectors and path/fix them so they cannot be re-exploited immediately after stopping the attack.
